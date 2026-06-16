@@ -218,6 +218,7 @@ def create_ui() -> gr.Blocks:
 if __name__ == "__main__":
     ui = create_ui()
     ui.queue().launch(title="花瓣网画板下载器",
+        theme=gr.themes.Soft(
             primary_hue="blue",
             secondary_hue="blue",
         ),
