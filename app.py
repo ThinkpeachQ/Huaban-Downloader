@@ -113,16 +113,6 @@ def create_ui() -> gr.Blocks:
     logger.info(f"Loaded cookie: {saved_cookie[:30]}...")  # 只打印前30个字符
     
     with gr.Blocks(
-        title="花瓣网画板下载器",
-        theme=gr.themes.Soft(
-            primary_hue="blue",
-            secondary_hue="blue",
-        ),
-        css="""
-        #gallery-container {
-            height: 600px !important;
-            overflow-y: auto !important;
-        }
         .gallery-item {
             height: 200px !important;
             object-fit: contain !important;
@@ -185,8 +175,6 @@ def create_ui() -> gr.Blocks:
                     height="auto",
                     preview=True,
                     show_label=True,
-                    show_share_button=False,
-                    show_download_button=True,
                     elem_id="gallery",
                     container=True
                 )
@@ -229,7 +217,15 @@ def create_ui() -> gr.Blocks:
 
 if __name__ == "__main__":
     ui = create_ui()
-    ui.queue().launch(
+    ui.queue().launch(title="花瓣网画板下载器",
+            primary_hue="blue",
+            secondary_hue="blue",
+        ),
+        css="""
+        #gallery-container {
+            height: 600px !important;
+            overflow-y: auto !important;
+        }
         server_name="127.0.0.1",
         share=True,
         show_error=True,
